@@ -1,11 +1,13 @@
 // from data.js
-var tableData = data;
+const tableData = data;
 
 // Select the button
-var button = d3.select("#filter-btn")
+const button = d3.select("#filter-btn")
 
 // Select the form
-var form = d3.select("#form")
+const form = d3.select("#form")
+
+const tableBody = d3.select(".table-body"); 
 
 // Create event handlers
 button.on("click", runFilter);
@@ -30,9 +32,11 @@ function runFilter () {
 
     console.log(filteredData);
 
-    var alienInfo = d3.select(".table-body");
-
-    alienInfo.html("");
-
-    alienInfo.append("tr").text(filteredData);
+    filteredData.forEach((runFilter) => {
+        const row = tableBody.append("tr");
+        Object.entries(runFilter).forEach(([key, value]) => {
+            const cell = row.append("td");
+            cell.text(value);
+        });
+    });
 };
