@@ -29,4 +29,10 @@ function runFilter () {
     var filteredData = tableData.filter(datum => datum.datetime ===inputValue);
 
     console.log(filteredData);
+
+    var alienInfo = d3.select(".table-body");
+
+    alienInfo.html("");
+
+    alienInfo.append("tr").text(filteredData);
 };
