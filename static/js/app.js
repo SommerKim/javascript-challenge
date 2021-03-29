@@ -22,4 +22,11 @@ function runFilter () {
 
     // Get value property of input element
     var inputValue = inputElement.property("value");
-}
+
+    console.log(inputValue);
+    console.log(tableData);
+
+    var filteredData = tableData.filter(datum => datum.datetime ===inputValue);
+
+    console.log(filteredData);
+};
