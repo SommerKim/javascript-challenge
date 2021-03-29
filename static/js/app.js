@@ -7,6 +7,7 @@ const button = d3.select("#filter-btn")
 // Select the form
 const form = d3.select("#form")
 
+// Select the table
 const tableBody = d3.select(".table-body"); 
 
 // Create event handlers
@@ -33,7 +34,12 @@ function runFilter () {
 
     console.log(filteredData);
 
-    //
+    // Message pop-up for entering non-existent date
+    if (filteredData.length === 0) {
+        alert('No data returned. Please try a different search parameter.');
+    };
+      
+    // Write filtered data to table
     filteredData.forEach((alienData) => {
         const row = tableBody.append("tr");
         Object.entries(alienData).forEach(([key, value]) => {
