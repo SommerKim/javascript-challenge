@@ -28,13 +28,15 @@ function runFilter () {
     console.log(inputValue);
     console.log(tableData);
 
+    // Get requested data
     var filteredData = tableData.filter(datum => datum.datetime ===inputValue);
 
     console.log(filteredData);
 
-    filteredData.forEach((runFilter) => {
+    //
+    filteredData.forEach((alienData) => {
         const row = tableBody.append("tr");
-        Object.entries(runFilter).forEach(([key, value]) => {
+        Object.entries(alienData).forEach(([key, value]) => {
             const cell = row.append("td");
             cell.text(value);
         });
