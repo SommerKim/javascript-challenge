@@ -45,7 +45,11 @@ function runFilter () {
     var shapeValue = inputShape.property("value");
 
     // Get requested data
-    var filteredData = tableData.filter(datum => datum.datetime ===dateValue);
+    var filteredData = tableData.filter(datum => datum.datetime ===dateValue) 
+    && tableData.filter(datum => datum.city ===cityValue)
+    && tableData.filter(datum => datum.state ===stateValue)
+    && tableData.filter(datum => datum.country ===countryValue)
+    && tableData.filter(datum => datum.shape ===shapeValue);
 
     console.log(filteredData);
 
