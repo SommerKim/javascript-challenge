@@ -1,11 +1,11 @@
 // from data.js
 const tableData = data;
 
-// Select the button
-const button = d3.select("#filter-btn")
+// Select the buttons
+const button = d3.select("#filter-btn");
 
 // Select the form
-const form = d3.select("#form")
+const form = d3.select("#form");
 
 // Select the table
 const tableBody = d3.select(".table-body"); 
@@ -13,16 +13,6 @@ const tableBody = d3.select(".table-body");
 // Create event handlers
 button.on("click", runFilter);
 form.on("submit", runFilter);
-
-function getOption() {
-    selectElement = 
-            document.querySelector('#select1');
-              
-    output = selectElement.value;
-
-    document.querySelector('.output').textContent
-            = output;
-}
 
 // Event handler function for the form
 function runFilter () {
@@ -37,6 +27,9 @@ function runFilter () {
     var inputCountry = d3.select("#country");
     var inputShape = d3.select("#shape");
 
+    console.log(tableData);
+    console.log(inputDate);
+
     // Get value property of input element
     var dateValue = inputDate.property("value");
     var cityValue = inputCity.property("value");
@@ -45,15 +38,27 @@ function runFilter () {
     var shapeValue = inputShape.property("value");
 
     // Get requested data
-    var filteredData = tableData.filter(datum => datum.datetime ===dateValue) 
-    && tableData.filter(datum => datum.city ===cityValue)
-    && tableData.filter(datum => datum.state ===stateValue)
-    && tableData.filter(datum => datum.country ===countryValue)
-    && tableData.filter(datum => datum.shape ===shapeValue);
+    let filteredData = tableData;
 
+    if (dateValue) {
+        filteredData = filteredData.filter(datum => datum.datetime ===dateValue)
+    };
+    if (cityValue) {
+        filteredData = filteredData.filter(datum => datum.city ===cityValue)
+    };
+    if (stateValue) {
+        filteredData = filteredData.filter(datum => datum.state ===stateValue)
+    };
+    if (countryValue) {
+        filteredData = filteredData.filter(datum => datum.country ===countryValue)
+    };
+    if (shapeValue) {
+        filteredData = filteredData.filter(datum => datum.shape ===shapeValue)
+    };
+    
     console.log(filteredData);
 
-    // Message pop-up for entering non-existent date
+    // Message pop-up for entering non-existent filter
     if (filteredData.length === 0) {
         alert('No data returned. Please try a different search parameter.');
     };
