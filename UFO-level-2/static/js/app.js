@@ -14,6 +14,16 @@ const tableBody = d3.select(".table-body");
 button.on("click", runFilter);
 form.on("submit", runFilter);
 
+function getOption() {
+    selectElement = 
+            document.querySelector('#select1');
+              
+    output = selectElement.value;
+
+    document.querySelector('.output').textContent
+            = output;
+}
+
 // Event handler function for the form
 function runFilter () {
 
@@ -21,16 +31,21 @@ function runFilter () {
     d3.event.preventDefault();
 
     // Select input element
-    var inputElement = d3.select("#datetime");
+    var inputDate = d3.select("#datetime");
+    var inputCity = d3.select("#city");
+    var inputState = d3.select("#state");
+    var inputCountry = d3.select("#country");
+    var inputShape = d3.select("#shape");
 
     // Get value property of input element
-    var inputValue = inputElement.property("value");
-
-    console.log(inputValue);
-    console.log(tableData);
+    var dateValue = inputDate.property("value");
+    var cityValue = inputCity.property("value");
+    var stateValue = inputState.property("value");
+    var countryValue = inputCountry.property("value");
+    var shapeValue = inputShape.property("value");
 
     // Get requested data
-    var filteredData = tableData.filter(datum => datum.datetime ===inputValue);
+    var filteredData = tableData.filter(datum => datum.datetime ===dateValue);
 
     console.log(filteredData);
 
