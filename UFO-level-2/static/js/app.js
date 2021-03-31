@@ -72,3 +72,11 @@ function runFilter () {
         });
     });
 };
+
+function resetFxn () {
+    document.getElementById("form").reset();
+};
+
+function clearResults () {
+    document.getElementById('tableContents').innerHTML='';
+};

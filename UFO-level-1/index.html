@@ -42,6 +42,8 @@
                     </ul>
                   </div>
                   <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                  <button id="filter-btn" type="button" class="btn btn-default" onclick="resetFxn()">Reset Form Fields</button>
+                  <button id="filter-btn" type="button" class="btn btn-default" onclick="clearResults()">Clear Results</button>
                 </form>
               </div>
             </div>
@@ -61,7 +63,7 @@
                   <th class="table-head">Comments</th>
                 </tr>
               </thead>
-              <tbody class="table-body"></tbody>
+              <tbody id="tableContents" class="table-body"></tbody>
             </table>
           </div>
         </div>
